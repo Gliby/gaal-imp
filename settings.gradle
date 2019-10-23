@@ -1,0 +1,2 @@
+include ':gaal-api'
+project(':gaal-api').projectDir = new File("../gaal-api")

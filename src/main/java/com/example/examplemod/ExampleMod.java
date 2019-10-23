@@ -1,9 +1,10 @@
 package com.example.examplemod;
 
-import net.minecraft.init.Blocks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import gliby.gaal.GAALMod;
+import net.minecraft.init.Blocks;
 
 @Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
 public class ExampleMod
@@ -14,6 +15,7 @@ public class ExampleMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        GAALMod mod;
 		// some example code
         System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
     }
