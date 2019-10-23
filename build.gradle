@@ -14,13 +14,8 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
-
-    configurations.all {
-        resolutionStrategy.dependencySubstitution {
-            substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
-        }
-    }
 }
+
 
 apply plugin: 'forge'
 
@@ -41,6 +36,12 @@ repositories {
 
 }
 
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
+    }
+}
+
 dependencies {
     compile 'com.github.Gliby:gaal-api:master-SNAPSHOT'
 //    compile project(":gaal-api")
@@ -59,6 +60,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
 }
+
 
 processResources
 {
@@ -82,4 +84,11 @@ processResources
 
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'gliby.gaal.impl.FMLCoreGAALPlugin'
+        attributes 'FMLCorePluginContainsMod': 'true'
+    }
 }
