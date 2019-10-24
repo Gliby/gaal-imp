@@ -1,0 +1,16 @@
+{
+    "command-keys": [
+        {
+            "key": "gradlew",
+            "platforms": {
+                "windows": "gradlew.bat",
+                "unix": "./gradlew.bat"
+            }
+        }
+    ],
+    "tasks": {
+        "setupWorkspace": "{gradlew} setupDecompWorkspace",
+        "idea": "{gradlew} idea",
+        "eclipse": "{gradlew}{ eclipse"
+    }
+}
