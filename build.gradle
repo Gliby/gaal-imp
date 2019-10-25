@@ -36,13 +36,19 @@ repositories {
 
 }
 
-if (project(':gaal-api').projectDir.exists()) {
-    configurations.all {
-        resolutionStrategy.dependencySubstitution {
-            substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
+def localAvailable = project(':gaal-api').getProjectDir().exists();
+
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            if (localAvailable) {
+                substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
+            }
         }
+        cacheChangingModulesFor 0, 'seconds'
     }
 }
+
 
 dependencies {
     compile 'com.github.Gliby:gaal-api:master-SNAPSHOT'
@@ -63,7 +69,6 @@ dependencies {
 
 }
 
-
 processResources
 {
     // this will ensure that this task is redone when the versions change.
@@ -82,10 +87,6 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
 jar {
