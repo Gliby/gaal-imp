@@ -14,13 +14,6 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
-
-    configurations.all {
-        resolutionStrategy.dependencySubstitution {
-            substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
-        }
-    }
-
 }
 
 
@@ -41,6 +34,14 @@ repositories {
         url = "https://jitpack.io/"
     }
 
+}
+
+if (project(':gaal-api').projectDir.exists()) {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute module("com.github.Gliby:gaal-api:master-SNAPSHOT") with project(':gaal-api')
+        }
+    }
 }
 
 dependencies {
