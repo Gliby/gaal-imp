@@ -9,8 +9,10 @@
         }
     ],
     "tasks": {
-        "setupWorkspace": "{gradlew} setupDecompWorkspace",
+        "setupDecompWorkspace": "{gradlew} setupDecompWorkspace",
         "idea": "{gradlew} idea",
-        "eclipse": "{gradlew}{ eclipse"
+        "eclipse": "{gradlew} eclipse",
+        "runClient": "{gradlew} runClient",
+        "runServer": "{gradlew} runServer"
     }
 }
