@@ -52,6 +52,11 @@ configurations.all {
 
 dependencies {
     compile 'com.github.Gliby:gaal-api:master-SNAPSHOT'
+    def gaalTempDir = file("gaal-temp")
+    if (gaalTempDir.exists()) {
+        compile fileTree(dir: gaalTempDir, include: ['*.jar', '*.zip*'])
+    }
+    
 //    compile project(":gaal-api")
 //    compile
     // you may put jars on which you depend on in ./libs
@@ -93,5 +98,8 @@ jar {
     manifest {
         attributes 'FMLCorePlugin': 'gliby.gaal.impl.FMLCoreGAALPlugin'
         attributes 'FMLCorePluginContainsMod': 'true'
+        if (hasProperty("GAALMod")) {
+            attributes 'GAALMod': getProperty("GAALMod")
+        }
     }
 }
